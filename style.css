@@ -20,6 +20,7 @@ header{
     width: 100%;
     top: 0;
     left: 0;
+    z-index: 1;
 }
 
 h1 {
@@ -70,6 +71,7 @@ div.prato{
     box-shadow: 0px 0px 10px -4px rgba(0, 0, 0, 0.479);
     padding: 18px 15px;
     cursor: pointer;
+    position: relative;
 }
 
 div.prato img{
@@ -105,14 +107,45 @@ div.prato-selecionado{
     padding: 10px 11px;
 }
 
+ion-icon{
+    display: none;
+}
+
+.icone-prato{
+    display: initial;
+    font-size: 18px;
+    color: #32B72F;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
 div.bebida-selecionada{
     border: 4px solid #32B72F;
     padding: 10px 11px;
 }
 
+.icone-bebida{
+    display: initial;
+    font-size: 18px;
+    color: #32B72F;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
 div.sobremesa-selecionada{
     border: 4px solid #32B72F;
     padding: 10px 11px;
+}
+
+.icone-sobremesa{
+    display: initial;
+    font-size: 18px;
+    color: #32B72F;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
 }
 
 div.fechar-pedido{
@@ -141,3 +174,4 @@ div.fechar-pedido button.botao-habilitado{
     background-color: #32B72F;
     font-weight: 700;
 }
+
