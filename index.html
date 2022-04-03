@@ -155,9 +155,32 @@
         </div>
     </div>
     <div class="fechar-pedido">
-        <button onclick="finalizarPedido()">
+        <button onclick="revisarPedido()">
             Selecione os 3 itens para fechar o pedido
         </button>
+    </div>
+    <div class="revisar-compra escondido">
+        <div class="caixa-revisao-compra">
+            <h5>Confirme seu pedido</h5>
+            <div class="confirmar confirmarPrato">
+                <h6>Nome do prato</h6>
+                <p>Preço do prato</p>
+            </div>
+            <div class="confirmar confirmarBebida">
+                <h6>Nome da bebida</h6>
+                <p>Preço da bebida</p>
+            </div>
+            <div class="confirmar confirmarSobremesa">
+                <h6>Nome da sobr</h6>
+                <p>Preço da sobr</p>
+            </div>
+            <div class="confirmar confirmarTotal">
+                <h6>TOTAL</h6>
+                <p>Preço total</p>
+            </div>
+            <div><button class="tudoCerto" onclick="finalizarPedido()">Tudo certo, pode pedir!</button></div>
+            <div><button class="cancelar" onclick="cancelarPedido()">Cancelar</button></div>
+        </div>
     </div>
 
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>

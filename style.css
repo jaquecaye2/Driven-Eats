@@ -175,3 +175,76 @@ div.fechar-pedido button.botao-habilitado{
     font-weight: 700;
 }
 
+div.revisar-compra{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 2;
+}
+
+div.caixa-revisao-compra{
+    margin: 0 auto;
+    width: 90%;
+    height: 353px;
+    background-color: #50D074;
+    position: fixed;
+    top: 25%;
+    left: 5%;
+    z-index: 2;
+    border-radius: 9px;
+    color: #FFF;
+    padding: 20px;
+    font-weight: 400;
+    font-size: 22px;
+}
+
+div.escondido{
+    display: none;
+}
+
+div.caixa-revisao-compra h5{
+    text-align: center;
+    margin-bottom: 28px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+div.confirmar{
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0px;
+}
+
+div.confirmarTotal{
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+button.tudoCerto{
+    background-color: #FFF;
+    color: #50D074;
+    border: none;
+    margin: 0 auto;
+    width: 99%;
+    height: 52px;
+    border-radius: 100px;
+    font-size: 22px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+div button.cancelar{
+    width: 100%;
+    height: 52px;
+    background-color: #50D074;
+    border: none;
+    font-size: 20px;
+    color: #FFF;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+

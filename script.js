@@ -21,6 +21,7 @@ function selecionarPrato(prato){
 }
 
 function selecionarBebida(bebida){
+    // Adicionar a borda
     let bebidaSelecionada = document.querySelector(".bebida-selecionada");
 
     if (bebidaSelecionada !== null){
@@ -29,6 +30,7 @@ function selecionarBebida(bebida){
 
     bebida.classList.add("bebida-selecionada")
 
+    // Adicionar o checkbox
     let checkAtivado = document.querySelector(".icone-bebida")
 
     if (checkAtivado !== null) {
@@ -41,6 +43,7 @@ function selecionarBebida(bebida){
 }
 
 function selecionarSobremesa(sobremesa){
+    // Adicionar a borda
     let sobremesaSelecionada = document.querySelector(".sobremesa-selecionada");
 
     if (sobremesaSelecionada !== null){
@@ -49,6 +52,7 @@ function selecionarSobremesa(sobremesa){
 
     sobremesa.classList.add("sobremesa-selecionada")
 
+    // Adicionar o checkbox
     let checkAtivado = document.querySelector(".icone-sobremesa")
 
     if (checkAtivado !== null) {
@@ -61,6 +65,7 @@ function selecionarSobremesa(sobremesa){
 }
 
 function mudarBotaoFinalizar(){
+    // função para colocar fundo verde e mudar texto do botao de finalizar pedido
     let prato = document.querySelector(".prato-selecionado")
     let bebida = document.querySelector(".bebida-selecionada");
     let sobremesa = document.querySelector(".sobremesa-selecionada")
@@ -71,32 +76,71 @@ function mudarBotaoFinalizar(){
     }
 }
 
-function finalizarPedido(){
+let prato;
+let valorPratoNumber;
+let sobremesa;
+let valorSobremesaNumber;
+let bebida;
+let valorBebidaNumber;
+let somaValores;
+
+function revisarPedido(){
     let botaoHabilitado = document.querySelector(".botao-habilitado")
 
-    let prato = document.querySelector(".prato-selecionado").querySelector("h3").innerHTML
-    let valorPrato = document.querySelector(".prato-selecionado").querySelector("h4").innerHTML
-    let valorPratoNumber = Number(valorPrato.slice("3","8").replace(",","."))
-
-    let bebida = document.querySelector(".bebida-selecionada").querySelector("h3").innerHTML
-    let valorBebida = document.querySelector(".bebida-selecionada").querySelector("h4").innerHTML
-    let valorBebidaNumber = Number(valorBebida.slice("3","8").replace(",","."))
-
-
-    let sobremesa = document.querySelector(".sobremesa-selecionada").querySelector("h3").innerHTML
-    let valorSobremesa = document.querySelector(".sobremesa-selecionada").querySelector("h4").innerHTML
-    let valorSobremesaNumber = Number(valorSobremesa.slice("3","8").replace(",","."))
-    
-    let somaValores = valorPratoNumber + valorBebidaNumber + valorSobremesaNumber
-
     if (botaoHabilitado !== null){
-        let celular = "5555997048940"
+        // adiciona a página com a caixa verde de confirmar o pedido
+        document.querySelector(".revisar-compra").classList.remove("escondido")
 
-        let mensagem = `Olá, gostaria de fazer o *pedido*: \n *- Prato*: ${prato} \n *- Bebida*: ${bebida} \n *- Sobremesa*: ${sobremesa} \n *Total*: R$*${somaValores.toFixed(2)}*`
+        // realiza a busca dos nomes dos pratos e após substitui eles no local correto da caixa verde
+        prato = document.querySelector(".prato-selecionado").querySelector("h3").innerHTML
+        let valorPrato = document.querySelector(".prato-selecionado").querySelector("h4").innerHTML
+        valorPratoNumber = Number(valorPrato.slice("3","8").replace(",","."))
+        
+        document.querySelector(".confirmarPrato").querySelector("h6").innerHTML = prato
+        document.querySelector(".confirmarPrato").querySelector("p").innerHTML = `R$ ${valorPratoNumber.toFixed(2).replace(".",",")}`
 
-        mensagem = window.encodeURIComponent(mensagem)
-        window.open(`https://wa.me/${celular}?text=${mensagem}`)
+        // realiza a busca dos nomes das bebidas e após substitui eles no local correto da caixa verde
+        bebida = document.querySelector(".bebida-selecionada").querySelector("h3").innerHTML
+        let valorBebida = document.querySelector(".bebida-selecionada").querySelector("h4").innerHTML
+        valorBebidaNumber = Number(valorBebida.slice("3","8").replace(",","."))
+
+        document.querySelector(".confirmarBebida").querySelector("h6").innerHTML = bebida
+        document.querySelector(".confirmarBebida").querySelector("p").innerHTML = `R$ ${valorBebidaNumber.toFixed(2).replace(".",",")}`
+
+        // realiza a busca dos nomes das sobremesas e após substitui eles no local correto da caixa verde
+        sobremesa = document.querySelector(".sobremesa-selecionada").querySelector("h3").innerHTML
+        let valorSobremesa = document.querySelector(".sobremesa-selecionada").querySelector("h4").innerHTML
+        valorSobremesaNumber = Number(valorSobremesa.slice("3","8").replace(",","."))
+
+        document.querySelector(".confirmarSobremesa").querySelector("h6").innerHTML = sobremesa
+        document.querySelector(".confirmarSobremesa").querySelector("p").innerHTML = `R$ ${valorSobremesaNumber.toFixed(2).replace(".",",")}`
+
+        // realiza a soma dos valores dos itens selecionados
+        somaValores = valorPratoNumber + valorBebidaNumber + valorSobremesaNumber
+        document.querySelector(".confirmarTotal").querySelector("p").innerHTML = `R$ ${somaValores.toFixed(2).replace(".",",")}`
     }
 }
 
+function finalizarPedido(){
+    let nome = prompt("Informe seu nome?")
+    let endereco = prompt("Informe seu endereço")
 
+    if (nome === "" || endereco === ""){
+        alert("Informe seus dados corretamente")
+    } else if (nome === null || endereco === null) {
+        alert("Informe seus dados corretamente")
+    } else {
+        let celular = "5555997048940"
+
+        let mensagem = `Olá, gostaria de fazer o *pedido*: \n *- Prato*: ${prato} \n *- Bebida*: ${bebida} \n *- Sobremesa*: ${sobremesa} \n *Total*: R$*${somaValores.toFixed(2)}* \n \n Nome: ${nome} \n Endereço: ${endereco}`
+
+        mensagem = window.encodeURIComponent(mensagem)
+        window.open(`https://wa.me/${celular}?text=${mensagem}`)
+
+        document.querySelector(".revisar-compra").classList.add("escondido")
+    }
+}
+
+function cancelarPedido(){
+    document.querySelector(".revisar-compra").classList.add("escondido")
+}
